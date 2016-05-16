@@ -1,0 +1,9 @@
+# Project
+npm-debug.log*
+node_modules
+tmp
+
+# Vim
+## swap
+[._]*.s[a-w][a-z]
+[._]s[a-w][a-z]
