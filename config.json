@@ -1,2 +1,55 @@
 {
+    "global": {
+        "maxForks": 2,
+        "logFacility": "LOG_DAEMON",
+        "cache_dir": "/var/cache/barchjs"
+    },
+    "features": {
+        "DRBD": {
+            "enabled": "false",
+            "state": "any",
+            "connection": "Connected",
+            "status": "UpToDate"
+        },
+        "internalLVM": "skip"
+    },
+    "managment": {
+        "listen": "127.0.0.1",
+        "port": 3088
+    },
+    "storage": {
+        "user": "barch",
+        "server": "backupserv",
+        "destFolder": "/usr/local/backup"
+    },
+    "backup": {
+        "cycle": {
+            "fullBackup": "1W",
+            "incrementalsEvery": "12H",
+            "removeOlderThen": "2W"
+        },
+        "encryption": {
+            "gpgKey": "80000E06",
+            "gpgPass": "000800000800000000000000000063B100360000"
+        },
+        "customConfig": "custom.json",
+        "alwaysSkip": "swap|luks",
+        "volumeGracePeriod": "24H",
+        "snapshots": {
+            "size": "10G",
+            "maxFull": 90
+        }
+    },
+    "advanced": {
+        "duplicity": {
+            "volSize": 250,
+            "retries": 3,
+            "source_mismatch": "deny"
+        },
+        "priority": {
+            "cpuNice": 19,
+            "ioNice": 7
+        },
+        "lvsTimer": 2000
+    }
 }

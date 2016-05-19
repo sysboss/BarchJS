@@ -10,13 +10,23 @@
 */
 
 // modules
-var tools      = require('./lib/tools.js'),
-    program    = require('./lib/usage.js'),
-    logger     = require('./lib/logger.js'),
-    config     = require('./config.json');
+var tools   = require('./lib/tools.js'),
+    program = require('./lib/usage.js'),
+    logger  = require('./lib/logger.js'),
+    config  = require('./lib/config.js');
+
+module.exports.program = program;
+module.exports.logger  = logger;
+module.exports.config  = config;
 
 // init logging
 logger.init();
+
+var lvsTimer = require('./lib/lvs_timer.js');
+
+setInterval( function () {
+    console.log(lvsTimer);
+}, 1000);
 
 // close syslog
 logger.close();
