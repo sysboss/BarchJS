@@ -10,23 +10,26 @@
 */
 
 // modules
-var tools   = require('./lib/tools.js'),
-    program = require('./lib/usage.js'),
-    logger  = require('./lib/logger.js'),
-    config  = require('./lib/config.js');
+var tools     = require('./lib/tools.js'),
+    program   = require('./lib/usage.js'),
+    logger    = require('./lib/logger.js'),
+    sizeUtils = require('./lib/size_utils.js'),
+    config    = require('./lib/config.js');
 
-module.exports.program = program;
-module.exports.logger  = logger;
-module.exports.config  = config;
+// exports
+module.exports.program   = program;
+module.exports.logger    = logger;
+module.exports.config    = config;
+module.exports.sizeUtils = sizeUtils;
 
 // init logging
 logger.init();
 
-var lvsTimer = require('./lib/lvs_timer.js');
+// start core timers
+logger.debug("Initialization");
 
-setInterval( function () {
-    console.log(lvsTimer);
-}, 1000);
+var vgs = require('./lib/vgs_timer.js'),
+    lvs = require('./lib/lvs_timer.js');
 
 // close syslog
 logger.close();
