@@ -28,8 +28,11 @@ logger.init();
 // start core timers
 logger.debug("Initialization");
 
-var vgs = require('./lib/vgs_timer.js'),
-    lvs = require('./lib/lvs_timer.js');
+var vgs = require('./lib/vgs_timer.js');
+
+module.exports.vgs = vgs;
+
+var lvs = require('./lib/lvs_timer.js');
 
 // close syslog
 logger.close();

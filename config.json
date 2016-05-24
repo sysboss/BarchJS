@@ -36,8 +36,14 @@
         "alwaysSkip": "swap|luks",
         "volumeGracePeriod": "24H",
         "snapshots": {
-            "size": "10G",
-            "maxFull": 90
+            "defaults": {
+                "size": "1G",
+                "maxFull": 90
+            },
+            "vg0": {
+                "size": "300M",
+                "maxFull": 80
+            }
         }
     },
     "advanced": {
@@ -50,6 +56,7 @@
             "cpuNice": 19,
             "ioNice": 7
         },
-        "lvsTimer": 2000
+        "lvsTimer": 120000,
+        "vgsTimer": 900000
     }
 }
